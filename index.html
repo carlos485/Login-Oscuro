@@ -31,12 +31,12 @@
     input.removeAttribute("type");
     if (type == "text") {
         input.setAttribute("type", "password");
-        eye.classList.remove("fa-eye");
-        eye.classList.add("fa-eye-slash");
-    } else {
-        input.setAttribute("type", "text");
         eye.classList.remove("fa-eye-slash");
         eye.classList.add("fa-eye");
+    } else {
+        input.setAttribute("type", "text");
+        eye.classList.remove("fa-eye");
+        eye.classList.add("fa-eye-slash");
     }
   }
 </script>

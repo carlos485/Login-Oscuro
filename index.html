@@ -3,6 +3,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
         <title></title>
         <link rel="stylesheet" href="estilos.css">
     </head>
@@ -11,9 +12,31 @@
             <form action="">
                 <h2>LOGIN</h2>
                 <input type="text" placeholder="Ingrese Usuario">
-                <input type="password" placeholder="Ingrese Contraseña">
+                <div class="password">
+                  <input type="password" placeholder="Ingrese Contraseña" id=password>
+                  <span class="span-eye" onclick="view()">
+                    <i class="far fa-eye" id=eye></i>
+                  </span>
+                </div>
                 <button class="btn">Ingresar</button>
             </form>
         </div>
     </body>
 </html>
+<script>
+  function view() {
+    var input = document.getElementById("password");
+    var eye = document.getElementById("eye");
+    var type = input.getAttribute("type");
+    input.removeAttribute("type");
+    if (type == "text") {
+        input.setAttribute("type", "password");
+        eye.classList.remove("fa-eye");
+        eye.classList.add("fa-eye-slash");
+    } else {
+        input.setAttribute("type", "text");
+        eye.classList.remove("fa-eye-slash");
+        eye.classList.add("fa-eye");
+    }
+  }
+</script>

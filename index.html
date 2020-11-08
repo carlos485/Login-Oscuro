@@ -57,14 +57,14 @@
     var passwordRequired = document.getElementById("required-password");
     errorUser.setAttribute("hidden","");
     errorPassword.setAttribute("hidden","");
-    if (!user.value.match(/^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i)) {
-      errorUser.removeAttribute("hidden");
-      userFormat.removeAttribute("hidden");
-    }
     if (user.value.length < 1) {
       errorUser.removeAttribute("hidden");
       userFormat.setAttribute("hidden","");
       userRequired.removeAttribute("hidden");
+    } else if (!user.value.match(/^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i)) {
+      userRequired.setAttribute("hidden","");
+      errorUser.removeAttribute("hidden");
+      userFormat.removeAttribute("hidden");
     }
     if (password.value.length < 1) {
       errorPassword.removeAttribute("hidden");

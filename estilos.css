@@ -72,6 +72,16 @@ button{
 button:hover{
     background: grey;
 }
+.error {
+    transition: 0.4s;
+    color: rgba(255, 255, 255, 0.796);
+    text-align: center;
+    padding: 4px;
+    font-size: 14px;
+    margin-bottom: 15px;
+    background-color: rgba(232, 15, 15, 0.713);
+    border-radius: 5px;
+}
 @media screen and (max-width: 600px){
     .signin{
         border: none;

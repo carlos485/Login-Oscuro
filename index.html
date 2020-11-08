@@ -9,17 +9,24 @@
     </head>
     <body>
         <div class="signin">
-            <form action="">
+            <!-- <form action=""> -->
                 <h2>LOGIN</h2>
-                <input type="email" placeholder="Ingrese Usuario" required>
+                <input type="text" id="user" placeholder="Ingrese Usuario">
+                <div class="error" id="error-user" hidden>
+                  <span id="user-required" hidden>*Debe ingresar su usuario.</span>
+                  <span id="format" hidden>*Debe contener el formato correcto.</span>
+                </div>
                 <div class="password">
-                  <input type="password" placeholder="Ingrese Contraseña" id=password required>
+                  <input type="password" placeholder="Ingrese Contraseña" id=password>
                   <span class="span-eye" onclick="view()">
                     <i class="far fa-eye" id=eye></i>
                   </span>
                 </div>
-                <button class="btn">Ingresar</button>
-            </form>
+                <div class="error" id="error-password" hidden>
+                  <span id="required-password">*Debe ingresar su contraseña.</span>
+                </div>
+                <button class="btn" onclick="validate()">Ingresar</button>
+            <!-- </form> -->
         </div>
     </body>
 </html>
@@ -37,6 +44,31 @@
         input.setAttribute("type", "text");
         eye.classList.remove("fa-eye");
         eye.classList.add("fa-eye-slash");
+    }
+  }
+
+  function validate() {
+    var user = document.getElementById("user");
+    var password = document.getElementById("password");
+    var errorUser = document.getElementById("error-user");
+    var userRequired = document.getElementById("user-required");
+    var userFormat = document.getElementById("format");
+    var errorPassword = document.getElementById("error-password");
+    var passwordRequired = document.getElementById("required-password");
+    errorUser.setAttribute("hidden","");
+    errorPassword.setAttribute("hidden","");
+    if (!user.value.match(/^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i)) {
+      errorUser.removeAttribute("hidden");
+      userFormat.removeAttribute("hidden");
+    }
+    if (user.value.length < 1) {
+      errorUser.removeAttribute("hidden");
+      userFormat.setAttribute("hidden","");
+      userRequired.removeAttribute("hidden");
+    }
+    if (password.value.length < 1) {
+      errorPassword.removeAttribute("hidden");
+      passwordRequired.removeAttribute("hidden");
     }
   }
 </script>
